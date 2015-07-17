@@ -3,7 +3,7 @@ using EntityFrameworkPlayground.Abstract;
 
 namespace EntityFrameworkPlayground.Concrete
 {
-    public class ConsoleLogger : ILogger
+    public class ConsoleLogger : IConsoleLogger
     {
         public void Log(string message)
         {

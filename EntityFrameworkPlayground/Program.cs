@@ -26,8 +26,10 @@ namespace EntityFrameworkPlayground
         {
             var kernel = new StandardKernel();
 
-            //Reusable Library Bindings
-            kernel.Bind<ILogger>().To<ConsoleLogger>();
+            //Reusable Library Bindings - These would ordinarily belong in a class library.
+            kernel.Bind<IConsoleLogger>().To<ConsoleLogger>();
+            kernel.Bind<IDatabaseLogger>().To<DatabaseLogger>();
+            kernel.Bind<ILogger>().To<ConsoleAndDatabaseLogger>();
 
             //Application Specific Bindings
             kernel.Bind<ISampleQueries>().To<SampleQueries>();

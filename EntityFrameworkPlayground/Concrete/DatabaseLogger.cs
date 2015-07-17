@@ -3,7 +3,7 @@ using EntityFrameworkPlayground.Abstract;
 
 namespace EntityFrameworkPlayground.Concrete
 {
-    public class DatabaseLogger : ILogger, IDisposable
+    public class DatabaseLogger : IDatabaseLogger, IDisposable
     {
         private readonly NorthwindEntities _entities;
 
@@ -12,19 +12,33 @@ namespace EntityFrameworkPlayground.Concrete
             _entities = new NorthwindEntities();
         }
 
-        public void Dispose()
-        {
-            _entities?.Dispose();
-        }
-
         public void Log(string message)
         {
-            throw new NotImplementedException();
+            var log = new ErrorLog
+            {
+                Message = message,
+                When = DateTime.Now
+            };
+
+            _entities.ErrorLogs.Add(log);
+            _entities.SaveChanges();
         }
 
         public void Log(Exception exception)
         {
-            throw new NotImplementedException();
+            var log = new ErrorLog
+            {
+                Message = exception.ToString(),
+                When = DateTime.Now
+            };
+
+            _entities.ErrorLogs.Add(log);
+            _entities.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            _entities?.Dispose();
         }
     }
 }

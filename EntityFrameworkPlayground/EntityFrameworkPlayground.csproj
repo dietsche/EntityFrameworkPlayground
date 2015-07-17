@@ -73,10 +73,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IDatabaseLogger.cs" />
+    <Compile Include="Abstract\IConsoleLogger.cs" />
     <Compile Include="Category.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
     <Compile Include="Abstract\ISampleQueries.cs" />
+    <Compile Include="Concrete\ConsoleAndDatabaseLogger.cs" />
     <Compile Include="Concrete\DatabaseLogger.cs" />
     <Compile Include="Customer.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
@@ -88,6 +91,9 @@
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
     <Compile Include="Abstract\ILogger.cs" />
+    <Compile Include="ErrorLog.cs">
+      <DependentUpon>Northwind.tt</DependentUpon>
+    </Compile>
     <Compile Include="LargeEmployee.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
@@ -144,6 +150,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="dbo.ErrorLog.sql" />
     <Content Include="Northwind.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Northwind.edmx</DependentUpon>
