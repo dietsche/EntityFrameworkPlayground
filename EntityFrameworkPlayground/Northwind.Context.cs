@@ -37,6 +37,5 @@ namespace EntityFrameworkPlayground
         public virtual DbSet<Shipper> Shippers { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<Territory> Territories { get; set; }
-        public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
     }
 }
